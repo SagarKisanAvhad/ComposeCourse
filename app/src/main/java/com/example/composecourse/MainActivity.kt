@@ -28,7 +28,7 @@ class MainActivity : ComponentActivity() {
     @Preview
     @Composable
     fun Practice(){
-        Row(
+        /*Row(
             modifier = Modifier
                 //.fillMaxSize(0.5f)
                 .width(300.dp)
@@ -41,6 +41,16 @@ class MainActivity : ComponentActivity() {
             Text("SAGAR")
             Text("KISAN")
             Text("AVHAD")
+        }*/
+        Column(
+            modifier = Modifier
+                .fillMaxHeight(0.7f)
+                //.width(600.dp)
+                .requiredWidth(600.dp)
+                .background(Color.Blue)
+        ) {
+            Text("Hello")
+            Text("World")
         }
     }
 }
