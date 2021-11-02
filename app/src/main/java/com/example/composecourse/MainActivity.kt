@@ -27,29 +27,20 @@ class MainActivity : ComponentActivity() {
 
     @Preview
     @Composable
-    fun Practice(){
-        /*Row(
-            modifier = Modifier
-                //.fillMaxSize(0.5f)
-                .width(300.dp)
-                //.height(200.dp)
-                .fillMaxHeight()
-                .background(Color.Green),
-            horizontalArrangement = Arrangement.SpaceAround,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Text("SAGAR")
-            Text("KISAN")
-            Text("AVHAD")
-        }*/
+    fun Practice() {
         Column(
             modifier = Modifier
-                .fillMaxHeight(0.7f)
+                //.fillMaxHeight(0.7f)
+                .fillMaxSize()
                 //.width(600.dp)
-                .requiredWidth(600.dp)
-                .background(Color.Blue)
+                // .requiredWidth(600.dp)
+                .background(Color.Magenta)
+                .padding(top = 50.dp),
+            //horizontalArrangement = Arrangement.SpaceAround,
+            //verticalAlignment = Alignment.CenterVertically
         ) {
-            Text("Hello")
+            Text("Hello",modifier = Modifier.offset(y = 20.dp))
+            Spacer(modifier = Modifier.height(16.dp))
             Text("World")
         }
     }
