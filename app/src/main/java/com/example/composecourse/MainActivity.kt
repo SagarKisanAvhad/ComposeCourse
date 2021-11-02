@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -30,17 +31,24 @@ class MainActivity : ComponentActivity() {
     fun Practice() {
         Column(
             modifier = Modifier
-                //.fillMaxHeight(0.7f)
-                .fillMaxSize()
+                .fillMaxHeight(0.7f)
+                .fillMaxWidth()
                 //.width(600.dp)
                 // .requiredWidth(600.dp)
                 .background(Color.Magenta)
-                .padding(top = 50.dp),
+                .border(width = 5.dp,color = Color.Green)
+                .padding(5.dp)
+                .border(width = 5.dp,color = Color.Blue)
+                .padding(5.dp)
+                .border(width = 5.dp,color = Color.Red)
+                .padding(5.dp),
             //horizontalArrangement = Arrangement.SpaceAround,
             //verticalAlignment = Alignment.CenterVertically
         ) {
-            Text("Hello",modifier = Modifier.offset(y = 20.dp))
-            Spacer(modifier = Modifier.height(16.dp))
+            Text("Hello",modifier = Modifier
+                .border(2.dp,Color.Black)
+                .offset(y = 20.dp))
+            Spacer(modifier = Modifier.height(50.dp))
             Text("World")
         }
     }
