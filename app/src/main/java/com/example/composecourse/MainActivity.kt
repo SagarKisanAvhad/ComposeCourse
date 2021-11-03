@@ -25,6 +25,10 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
@@ -33,6 +37,16 @@ import com.example.composecourse.ui.theme.ComposeCourseTheme
 import com.google.android.material.internal.ViewUtils
 
 class MainActivity : ComponentActivity() {
+
+    private val fontFamily by lazy {
+        FontFamily(
+            Font(R.font.ubuntu_bold, FontWeight.Bold),
+            Font(R.font.ubuntu_light, FontWeight.Light),
+            Font(R.font.ubuntu_medium, FontWeight.Medium),
+            Font(R.font.ubuntu_regular, FontWeight.Normal)
+        )
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -108,7 +122,11 @@ class MainActivity : ComponentActivity() {
 
                 Text(
                     text = title,
-                    style = TextStyle(color = Color.White, fontSize = 16.sp),
+                    color = Color.White,
+                    fontSize=16.sp,
+                    fontFamily = fontFamily,
+                    fontWeight = FontWeight.Light,
+                    fontStyle = FontStyle.Italic,
                     modifier = Modifier
                         .padding(12.dp)
                         .align(Alignment.BottomStart)
