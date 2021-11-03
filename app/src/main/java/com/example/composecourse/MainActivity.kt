@@ -48,7 +48,7 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-   // @Preview
+    @Preview
     @Composable
     fun Practice() {
         Column(
@@ -117,17 +117,4 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    @Preview
-    @Composable
-    fun PreviewImage(){
-        val painter = painterResource(id = R.drawable.abc)
-        ImageCard(painter =painter,
-            contentDescription ="abc" ,
-            title ="Compose is awesome",
-            modifier = Modifier
-                .fillMaxWidth(0.5f)
-                .padding(16.dp)
-        )
-
-    }
 }
