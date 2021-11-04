@@ -17,6 +17,9 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -35,6 +38,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.composecourse.ui.theme.ComposeCourseTheme
 import com.google.android.material.internal.ViewUtils
+import kotlin.random.Random
 
 class MainActivity : ComponentActivity() {
 
@@ -51,14 +55,18 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
            // Practice()
-            val painter = painterResource(id = R.drawable.abc)
+            /*val painter = painterResource(id = R.drawable.abc)
             ImageCard(painter =painter,
                 contentDescription ="abc" ,
                 title ="Compose is awesome",
                 modifier = Modifier
                     .fillMaxWidth(0.5f)
                     .padding(16.dp)
-            )
+            )*/
+
+            /////////////////
+
+            ColorBox(Modifier.fillMaxSize())
         }
     }
 
@@ -112,13 +120,15 @@ class MainActivity : ComponentActivity() {
 
                 Box(modifier = Modifier
                     .fillMaxSize()
-                    .background(Brush.verticalGradient(
-                    colors = listOf(
-                        Color.Transparent,
-                        Color.Black
-                    ),
-                    startY = 0f
-                )))
+                    .background(
+                        Brush.verticalGradient(
+                            colors = listOf(
+                                Color.Transparent,
+                                Color.Black
+                            ),
+                            startY = 0f
+                        )
+                    ))
 
                 Text(
                     text = title,
@@ -133,6 +143,17 @@ class MainActivity : ComponentActivity() {
                 )
             }
         }
+    }
+
+    @Composable
+    fun ColorBox(modifier: Modifier = Modifier) {
+        val color = remember { mutableStateOf(Color.Yellow) }
+        Box(modifier = modifier
+            .background(color.value)
+            .clickable {
+                color.value = Color(Random.nextFloat(), Random.nextFloat(), Random.nextFloat())
+            }
+        )
     }
 
 }
