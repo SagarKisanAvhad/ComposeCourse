@@ -3,10 +3,7 @@ package com.example.composecourse
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.*
 import androidx.compose.foundation.gestures.DraggableState
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.gestures.draggable
@@ -32,6 +29,7 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
@@ -63,12 +61,8 @@ class MainActivity : ComponentActivity() {
                     .fillMaxWidth(0.5f)
                     .padding(16.dp)
             )*/
-
             /////////////////
-
-
-
-            Column(Modifier.fillMaxSize()) {
+            /*Column(Modifier.fillMaxSize()) {
                 val color1 = remember { mutableStateOf(Color.Yellow) }
                 val color2 = remember { mutableStateOf(Color.Magenta) }
                 ColorBox(Modifier.weight(1F).fillMaxSize(),color1.value){newColor ->
@@ -77,15 +71,31 @@ class MainActivity : ComponentActivity() {
                 ColorBox(Modifier.weight(1F).fillMaxSize(),color2.value){newColor ->
                     color1.value = newColor
                 }
-                /*Box(modifier = Modifier
+                *//*Box(modifier = Modifier
                     .background(color = color.value)
                     .weight(1F)
-                    .fillMaxSize())*/
+                    .fillMaxSize())*//*
+            }*/
+
+            /////////////////
+            val scrollState = rememberScrollState()
+            Column(modifier = Modifier.verticalScroll(scrollState)) {
+                for (i in 1..50){
+                    Text(
+                        text = "Item $i",
+                        fontSize = 24.sp,
+                        fontWeight = FontWeight.Bold,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .background(Color.Magenta)
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                }
             }
         }
     }
 
-    @Preview
     @Composable
     fun Practice() {
         Column(
