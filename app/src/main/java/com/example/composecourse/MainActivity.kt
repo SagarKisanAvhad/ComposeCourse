@@ -10,6 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.layoutId
 import androidx.compose.ui.unit.dp
+import androidx.constraintlayout.compose.ChainStyle
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.ConstraintSet
 import androidx.constraintlayout.compose.Dimension
@@ -22,30 +23,39 @@ class MainActivity : ComponentActivity() {
                 val greenBox = createRefFor("greenbox")
                 val redBox = createRefFor("redbox")
 
-                constrain(greenBox){
+                constrain(greenBox) {
                     top.linkTo(parent.top)
                     start.linkTo(parent.start)
+                    end.linkTo(redBox.start)
                     width = Dimension.value(100.dp)
                     height = Dimension.value(100.dp)
                 }
 
-                constrain(redBox){
+                constrain(redBox) {
                     top.linkTo(parent.top)
                     start.linkTo(greenBox.end)
                     end.linkTo(parent.end)
-                    width = Dimension.fillToConstraints //match constraint
+                    width = Dimension.value(100.dp) //match constraint
                     height = Dimension.value(100.dp)
                 }
+                createHorizontalChain(
+                    elements = arrayOf(greenBox, redBox),
+                    chainStyle = ChainStyle.Packed
+                )
             }
 
-            ConstraintLayout(constraintSet = constraints,modifier = Modifier.fillMaxSize()) {
-                Box(modifier = Modifier
-                    .background(Color.Green)
-                    .layoutId("greenbox"))
+            ConstraintLayout(constraintSet = constraints, modifier = Modifier.fillMaxSize()) {
+                Box(
+                    modifier = Modifier
+                        .background(Color.Green)
+                        .layoutId("greenbox")
+                )
 
-                Box(modifier = Modifier
-                    .background(Color.Red)
-                    .layoutId("redbox"))
+                Box(
+                    modifier = Modifier
+                        .background(Color.Red)
+                        .layoutId("redbox")
+                )
             }
         }
     }
