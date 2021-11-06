@@ -39,20 +39,10 @@ import com.google.android.material.internal.ViewUtils
 import kotlin.random.Random
 
 class MainActivity : ComponentActivity() {
-
-    private val fontFamily by lazy {
-        FontFamily(
-            Font(R.font.ubuntu_bold, FontWeight.Bold),
-            Font(R.font.ubuntu_light, FontWeight.Light),
-            Font(R.font.ubuntu_medium, FontWeight.Medium),
-            Font(R.font.ubuntu_regular, FontWeight.Normal)
-        )
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-
+            Navigation()
         }
     }
 
