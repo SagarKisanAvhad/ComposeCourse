@@ -32,7 +32,8 @@ class MainActivity : ComponentActivity() {
                 constrain(redBox){
                     top.linkTo(parent.top)
                     start.linkTo(greenBox.end)
-                    width = Dimension.value(100.dp)
+                    end.linkTo(parent.end)
+                    width = Dimension.fillToConstraints //match constraint
                     height = Dimension.value(100.dp)
                 }
             }
